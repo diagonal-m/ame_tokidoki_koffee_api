@@ -15,11 +15,11 @@ ActiveRecord::Schema.define(version: 2023_01_21_120734) do
   create_table "coffee_bean_detail_page_urls", force: :cascade do |t|
     t.string "url", null: false
     t.integer "coffee_store_id", null: false
-    t.integer "formatting_id_id"
+    t.integer "formatting_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["coffee_store_id"], name: "index_coffee_bean_detail_page_urls_on_coffee_store_id"
-    t.index ["formatting_id_id"], name: "index_coffee_bean_detail_page_urls_on_formatting_id_id"
+    t.index ["formatting_id"], name: "index_coffee_bean_detail_page_urls_on_formatting_id"
   end
 
   create_table "coffee_stores", force: :cascade do |t|
@@ -44,6 +44,6 @@ ActiveRecord::Schema.define(version: 2023_01_21_120734) do
   end
 
   add_foreign_key "coffee_bean_detail_page_urls", "coffee_stores"
-  add_foreign_key "coffee_bean_detail_page_urls", "formatting_ids"
+  add_foreign_key "coffee_bean_detail_page_urls", "formattings"
   add_foreign_key "format_statuses", "coffee_bean_detail_page_urls"
 end
