@@ -10,12 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_21_115206) do
+ActiveRecord::Schema.define(version: 2023_01_21_115723) do
 
   create_table "coffee_stores", force: :cascade do |t|
     t.string "store_name", null: false
     t.string "station"
     t.string "beans_page_url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "formattings", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
