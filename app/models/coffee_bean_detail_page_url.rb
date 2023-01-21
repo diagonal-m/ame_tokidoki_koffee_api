@@ -11,6 +11,7 @@ class CoffeeBeanDetailPageUrl < ApplicationRecord
         url: url
       )
       detail_url.create_format_status!
+      detail_url
     end
   end
 end
