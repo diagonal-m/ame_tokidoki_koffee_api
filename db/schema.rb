@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_21_115918) do
+ActiveRecord::Schema.define(version: 2023_01_21_120734) do
 
   create_table "coffee_bean_detail_page_urls", force: :cascade do |t|
     t.string "url", null: false
@@ -30,6 +30,14 @@ ActiveRecord::Schema.define(version: 2023_01_21_115918) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "format_statuses", force: :cascade do |t|
+    t.integer "status", default: 0, null: false
+    t.integer "coffee_bean_detail_page_url_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["coffee_bean_detail_page_url_id"], name: "index_format_statuses_on_coffee_bean_detail_page_url_id"
+  end
+
   create_table "formattings", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -37,4 +45,5 @@ ActiveRecord::Schema.define(version: 2023_01_21_115918) do
 
   add_foreign_key "coffee_bean_detail_page_urls", "coffee_stores"
   add_foreign_key "coffee_bean_detail_page_urls", "formatting_ids"
+  add_foreign_key "format_statuses", "coffee_bean_detail_page_urls"
 end

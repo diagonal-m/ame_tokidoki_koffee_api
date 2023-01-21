@@ -1,0 +1,2 @@
+class FormatStatus < ApplicationRecord
+end
