@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_01_21_115723) do
+ActiveRecord::Schema.define(version: 2023_01_21_115918) do
+
+  create_table "coffee_bean_detail_page_urls", force: :cascade do |t|
+    t.string "url", null: false
+    t.integer "coffee_store_id", null: false
+    t.integer "formatting_id_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["coffee_store_id"], name: "index_coffee_bean_detail_page_urls_on_coffee_store_id"
+    t.index ["formatting_id_id"], name: "index_coffee_bean_detail_page_urls_on_formatting_id_id"
+  end
 
   create_table "coffee_stores", force: :cascade do |t|
     t.string "store_name", null: false
@@ -25,4 +35,6 @@ ActiveRecord::Schema.define(version: 2023_01_21_115723) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "coffee_bean_detail_page_urls", "coffee_stores"
+  add_foreign_key "coffee_bean_detail_page_urls", "formatting_ids"
 end

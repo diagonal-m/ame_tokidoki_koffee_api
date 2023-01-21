@@ -1,0 +1,2 @@
+class CoffeeBeanDetailPageUrl < ApplicationRecord
+end
