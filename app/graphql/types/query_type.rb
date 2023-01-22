@@ -13,5 +13,17 @@ module Types
     def test_field
       "Hello World!"
     end
+
+    field :coffee_stores, [CoffeeStoreType], null: true
+    def coffee_stores
+      CoffeeStore.all
+    end
+
+    field :manual_input_target, CoffeeBeanDetailPageUrlType, null: true
+    def manual_input_target
+      manual_input_status = FormatStatus.manual_input.first
+      manual_input_status.coffee_bean_detail_page_url
+    end
+
   end
 end
