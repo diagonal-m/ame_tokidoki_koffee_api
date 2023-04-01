@@ -10,4 +10,7 @@
 #  updated_at                            :datetime         not null
 #
 class CoffeeStore < ApplicationRecord
+  has_many :coffee_beans
+
+  validates :name, presence: true
 end

@@ -23,5 +23,11 @@
 #  fk_rails_...  (coffee_store_id => coffee_stores.id)
 #
 class CoffeeBean < ApplicationRecord
-  belongs_to :coffee_shop
+  belongs_to :coffee_store
+  has_one :coffee_bean_detail_page
+  has_many :new_releases
+  has_many :coffee_bean_taste_notes
+  has_many :taste_notes, through: :coffee_bean_taste_notes
+
+  validates :name, presence: true
 end

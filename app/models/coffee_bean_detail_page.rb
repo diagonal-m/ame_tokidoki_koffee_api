@@ -19,4 +19,6 @@
 #
 class CoffeeBeanDetailPage < ApplicationRecord
   belongs_to :coffee_bean
+
+  validates :url, presence: true
 end

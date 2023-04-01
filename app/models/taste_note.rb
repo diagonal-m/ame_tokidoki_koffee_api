@@ -8,4 +8,8 @@
 #  updated_at :datetime         not null
 #
 class TasteNote < ApplicationRecord
+  has_many :coffee_bean_taste_notes
+  has_many :coffee_beans, through: :coffee_bean_taste_notes
+
+  validates :name, presence: true
 end
