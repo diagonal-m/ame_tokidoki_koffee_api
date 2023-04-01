@@ -13,5 +13,10 @@ module Types
     def test_field
       "Hello World!"
     end
+
+    field :all_coffee_stores, [Types::CoffeeStoreType], null: false, description: "全てのコーヒーショップを取得"
+    def all_coffee_stores
+      CoffeeStore.all
+    end
   end
 end
