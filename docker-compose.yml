@@ -1,14 +1,5 @@
 version: '3.8'
 services:
-  db:
-    image: mysql:5.7
-    volumes:
-      - mysql-data:/var/lib/mysql
-    ports:
-      - 3307:3306
-    environment:
-      TZ: Asia/Tokyo
-      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
   web:
     build: .
     command: bundle exec rails s -p 3333 -b '0.0.0.0'
@@ -19,6 +10,15 @@ services:
       - '3333:3333'
     depends_on:
       - db
+  db:
+    image: mysql:5.7
+    volumes:
+      - mysql_data:/var/lib/mysql
+    ports:
+      - 3307:3306
+    environment:
+      TZ: Asia/Tokyo
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
 volumes:
   mysql-data:
 
