@@ -1,6 +1,6 @@
 version: '3.8'
 services:
-  web:
+  api:
     build: .
     command: bundle exec rails s -p 3333 -b '0.0.0.0'
     volumes:
