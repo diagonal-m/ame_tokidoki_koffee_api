@@ -1,7 +1,7 @@
 class CreateCoffeeBeans < ActiveRecord::Migration[6.1]
   def change
     create_table :coffee_beans do |t|
-      t.references :coffee_shop, null: false, foreign_key: true
+      t.references :coffee_store, null: false, foreign_key: true
       t.string :name, null: false, comment: 'コーヒー名'
       t.string :country, comment: '国名'
       t.string :plantation, comment: '農園名'
