@@ -30,4 +30,6 @@ class CoffeeBean < ApplicationRecord
   has_many :taste_notes, through: :coffee_bean_taste_notes
 
   validates :name, presence: true
+
+  enum roasted: { light: 0, medium: 1, dark: 2 }
 end
