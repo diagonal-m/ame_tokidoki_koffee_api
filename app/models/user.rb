@@ -21,4 +21,20 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  def generate_token
+    JWT.encode({ user_id: self.id, exp: (Time.now + 1.day).to_i }, Rails.application.credentials.secret_key_base, 'HS256')
+  end
+
+  class << self
+    def find_by_token(token)
+      body = JWT.decode(token, Rails.application.credentials.secret_key_base)[0]
+      payload = HashWithIndifferentAccess.new body
+      return nil if payload.blank?
+
+      User.find_by(id: payload['user_id'])
+    rescue
+      nil
+    end
+  end
 end
